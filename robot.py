@@ -32,7 +32,7 @@ class MyRobot(magicbot.MagicRobot):
     def teleopPeriodic(self):
         """Called periodically during teleop"""
         self.led.blink()
-        # self.controller.capture_buton_presses()
+        #'''
         # Change the drive mode based on the button pressed
         if self.controller.a_button_pressed():
             self.drivetrain.set_mode("arcade")
@@ -40,7 +40,14 @@ class MyRobot(magicbot.MagicRobot):
             self.drivetrain.set_mode("tank")
         if self.controller.x_button_pressed():
             self.drivetrain.set_mode("curvature")
-
+        '''
+        # self.controller.capture_buton_presses()
+        drivetrain_modes = ["arcade", "tank", "curvature"]
+        if self.controller.left_bumper_pressed():
+            current_mode = self.drivetrain.get_mode()
+            next_index = (drivetrain_modes.index(current_mode) + 1) % len(drivetrain_modes)
+            self.drivetrain.set_mode(drivetrain_modes[next_index])
+        #'''
         # Do something with the joystick values
         # Get the input from the controller
         left_x, left_y, right_x, right_y = self.controller.get_joysticks()
