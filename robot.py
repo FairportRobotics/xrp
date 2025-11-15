@@ -12,13 +12,14 @@ class MyRobot(magicbot.MagicRobot):
 
     def createObjects(self):
         """Create motors and stuff here"""
-        self.left_motor = xrp.XRPMotor(0)
-        self.right_motor = xrp.XRPMotor(1)
-        self.right_motor.setInverted(True)
-        self.drive = wpilib.drive.DifferentialDrive(self.left_motor, self.right_motor)
+        left_motor = xrp.XRPMotor(0)
+        right_motor = xrp.XRPMotor(1)
+        #right_motor.setInverted(True)
+        self.drive = wpilib.drive.DifferentialDrive(left_motor, right_motor)
 
     def teleopInit(self):
         """Called when teleop starts; optional"""
+        pass
 
     def teleopPeriodic(self):
         """Called periodically during teleop"""
