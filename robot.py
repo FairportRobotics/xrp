@@ -1,6 +1,5 @@
-from components.controller import XboxController
-from components.drivetrain import Drivetrain
-from components.led import LED
+import components
+import constants
 import magicbot
 import os
 import xrp
@@ -11,17 +10,17 @@ os.environ["HALSIMXRP_PORT"] = "3540"
 
 class MyRobot(magicbot.MagicRobot):
     # Declare variables and objects here
-    controller: XboxController
-    drivetrain: Drivetrain
-    led: LED
+    controller: components.XboxController
+    drivetrain: components.Drivetrain
+    led: components.LED
 
     def createObjects(self):
         """Create motors and stuff here"""
         # Controller stuff here
-        self.controller_port = 0
+        self.controller_port = constants.CONTROLLER_PORT
         # Drivetrain stuff here
-        self.drivetrain_left_motor = xrp.XRPMotor(0)
-        self.drivetrain_right_motor = xrp.XRPMotor(1)
+        self.drivetrain_left_motor = xrp.XRPMotor(constants.LEFT_MOTOR_CHANNEL)
+        self.drivetrain_right_motor = xrp.XRPMotor(constants.RIGHT_MOTOR_CHANNEL)
         # LED stuff here
         self.on_board_led = xrp.XRPOnBoardIO()
 
