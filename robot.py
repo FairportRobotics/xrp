@@ -24,3 +24,7 @@ class MyRobot(magicbot.MagicRobot):
         """Called periodically during teleop"""
         self.CYCLES += 1
         self.drive.arcadeDrive(0.5, 0)
+
+    @magicbot.feedback
+    def get_cycles(self) -> int:
+        return self.CYCLES
