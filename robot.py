@@ -11,20 +11,29 @@ os.environ["HALSIMXRP_PORT"] = "3540"
 
 class MyRobot(magicbot.MagicRobot):
     # Declare variables and objects here
+    accelerometer: components.Accelerometer
     controller: components.XboxController
+    distance_sensor = components.Distance
     drivetrain: components.DriveTrain
-    led: component.LED
-    left_motor: components.IndividualMotor
-    right_motor: components.IndividualMotor
+    gyro: components.Gyro
+    led: components.LED
+    servo: components.Servo
 
     def createObjects(self):
         """Create motors and stuff here"""
         # Controller stuff here
         self.controller_port = constants.CONTROLLER_PORT
         # Drivetrain stuff here
-        self.left_motor_channel = constants.LEFT_MOTOR_CHANNEL
-        self.right_motor_channel = constants.RIGHT_MOTOR_CHANNEL
-        self.right_motor.set_inverted()
+        self.drivetrain_left_motor = xrp.XRPMotor(constants.LEFT_MOTOR_CHANNEL)
+        self.drivetrain_left_motor_encoder = wpilib.Encoder(
+            constants.LEFT_ENCODER_CHANNEL_A, constants.LEFT_ENCODER_CHANNEL_B
+        )
+        self.drivetrain_right_motor = xrp.XRPMotor(constants.RIGHT_MOTOR_CHANNEL)
+        self.drivetrain_right_motor_encoder = wpilib.Encoder(
+            constants.RIGHT_ENCODER_CHANNEL_A, constants.RIGHT_ENCODER_CHANNEL_B
+        )
+        # Servo
+        self.servo_channel = constants.SERVO_CHANNEL
 
     def teleopInit(self):
         """Called when teleop starts; optional"""

@@ -6,6 +6,9 @@ class Accelerometer:
     def execute(self) -> None:
         pass
 
+    def setup(self):
+        self.gyro = xrp.XRPGyro()
+
     # =========================================================================
     # CONTROL METHODS
     # =========================================================================
@@ -15,16 +18,16 @@ class Accelerometer:
     # =========================================================================
 
     @magicbot.feedback(key="X")
-    def x(self):
-        pass
+    def x(self) -> float:
+        return self.gyro.getRateX()
 
     @magicbot.feedback(key="Y")
-    def y(self):
-        pass
+    def y(self) -> float:
+        return self.gyro.getRateY()
 
     @magicbot.feedback(key="Z")
-    def z(self):
-        pass
+    def z(self) -> float:
+        return self.gyro.getRateZ()
 
 
 class Distance:
@@ -92,6 +95,9 @@ class Gyro:
     def execute(self) -> None:
         pass
 
+    def setup(self) -> None:
+        self.gyro = xrp.XRPGyro()
+
     # =========================================================================
     # CONTROL METHODS
     # =========================================================================
@@ -100,17 +106,17 @@ class Gyro:
     # INFORMATIONAL METHODS
     # =========================================================================
 
-    @magicbot.feedback(key="Yaw")
-    def yaw(self):
-        pass
+    @magicbot.feedback(key="Pitch")
+    def pitch(self) -> float:
+        return self.gyro.getAngleY()
 
     @magicbot.feedback(key="Roll")
-    def roll(self):
-        pass
+    def roll(self) -> float:
+        return self.gyro.getAngleX()
 
-    @magicbot.feedback(key="Pitch")
-    def pitch(self):
-        pass
+    @magicbot.feedback(key="Yaw")
+    def yaw(self) -> float:
+        return self.gyro.getAngleZ()
 
 
 class Reflectance:

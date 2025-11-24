@@ -2,19 +2,17 @@ import magicbot
 import wpilib
 import xrp
 
+
 class IndividualMotor:
-    channel: int
-    encoder_channel_a: int
-    encoder_channel_b: int
+    motor: xrp.XRPMotor
+    encoder: wpilib.Encoder
 
     def execute(self):
         pass
 
     def setup(self):
-        self.motor_speed 0.0
+        self.motor_speed = 0.0
         self.motor_encoder_count = 0
-        self.motor = xrp.XRPMotor(self.channel)
-        self.encoder = wpilib.Encoder(self.encoder_channel_a, self.encoder_channel_b)
 
     # =========================================================================
     # CONTROL METHODS
@@ -33,11 +31,9 @@ class IndividualMotor:
     # =========================================================================
 
     @magicbot.feedback(key="encoder count")
-    def encoder_count(self) -> int:
+    def encoder_count(self) -> float:
         return self.encoder.getDistance()
-    
+
     @magicbot.feedback(key="speed")
     def speed(self) -> float:
         return self.encoder.getRate()
-
-    

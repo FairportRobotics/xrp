@@ -22,6 +22,6 @@ class Servo:
     # INFORMATIONAL METHODS
     # =========================================================================
 
-    @magicbot.feedback(key="position")
+    @magicbot.feedback(key="Position")
     def get_position(self) -> float:
         return self.servo.getPosition()
