@@ -1,9 +1,11 @@
 # Fairport Robotics XRP Code
+
 ---
 
 ## Getting Started
 
-The following steps need to be taken.   The command prompt commands are given, however your IDE might have other ways of doing this.
+The following steps need to be taken. The command prompt commands are given, however your IDE might have other ways of
+doing this.
 
 ### 1. Clone this repository to your computer
 
@@ -23,7 +25,13 @@ We want to create a self-contained environment
 
 You want the packages installed to the virtual environment so you need to activate it
 
+Windows:
+
 `.venv\Scripts\activate`
+
+On Mac:
+
+`source .venv/bin/activate`
 
 ### 4. Install robotpy
 
@@ -70,4 +78,3 @@ Commit your changes with a helpful message
 Then push the changes to GitHub
 
 `git push`
-
