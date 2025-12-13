@@ -37,9 +37,13 @@ class Robot(magicbot.MagicRobot):
 
         # Gyro - Passed into the gyro and accelerometer components
         self.xrp_gyro = xrp.XRPGyro()
+    
+    def teleopInit(self) -> None:
+        self.drivetrain.reset_encoders()
+        return super().teleopInit()
 
     def teleopPeriodic(self):
-        self.controller.capture_buton_presses()
+        self.controller.capture_button_presses()
 
         left_x, left_y, right_x, right_y = self.controller.get_joysticks()
         if self.drivetrain.get_mode() == "tank":
